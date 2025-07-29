@@ -1,59 +1,81 @@
-import React, { useState } from 'react'
-import gemisslogo from '../assets/Gemiss.png'
-import './NavbarLanding.css'
-export default function NavbarLandig() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [activeCategory, setActiveCategory] = useState(null)
+import React, { useState, useEffect } from "react";
+import logo1 from "../assets/gemiss.png";
+import { Heart, User, ShoppingBag, Search } from "lucide-react";
+import DropdownMenu from "../hooks/DropdownMenu";
+import "./NavbarLanding.css";
 
-  const categories = [
-    { name: 'Novedades' }, 
-    { name: 'Bolsos' },
-    { name: 'Mujer', sub: [ 
-      'Novedades para Mujer',
-      'Bolsos',
-      'Ropa',
-      'Zapatos',
-      'Carteras & Marroquinería',
-      'Viaje',
-      'Accesorios',
-      'Joyería & Relojes',
-      'Regalos'
-    ] },
-    { name: 'Hombre' },
-    { name: 'Niños' },
-    { name: 'Viaje' },
-    { name: 'Joyería & Relojes' },
-    { name: 'Fragancias y Maquillaje' },
-    { name: 'Décor & Lifestyle' },
-    { name: 'Regalos' }
-  ]
+export default function NavbarLanding() {
+  const [activeMenu, setActiveMenu] = useState(false);
+
+  const handleMouseEnter = (menuName) => {
+    setActiveMenu(menuName);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveMenu(null);
+  };
+
+  useEffect(() => {
+    if (activeMenu) {
+      document.body.classList.add("dropdown-active");
+    } else {
+      document.body.classList.remove("dropdown-active");
+    }
+
+    return () => {
+      document.body.classList.remove("dropdown-active");
+    };
+  }, [activeMenu]);
 
   return (
-    <nav className="nav-landing">
-      <img src={gemisslogo} alt="Logo-landing" />
-      <button className="menu-btn" onClick={() => setSidebarOpen(true)}>☰</button>
-      {sidebarOpen && (
-        <div className="sidebar">
-          <button className="close-btn" onClick={() => setSidebarOpen(false)}>✕</button>
-        
-          <ul className="sidebar-list">
-            {categories.map((cat, idx) => (
-              <li key={idx}>
-                <span onClick={() => setActiveCategory(cat.sub ? cat.name : null)}>
-                  {cat.name}
-                </span>
-                {activeCategory === cat.name && cat.sub && (
-                  <ul className="submenu">
-                    {cat.sub.map((sub, i) => (
-                      <li key={i}>{sub}</li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </nav>
-  )
+    <div 
+      className="navbar-container"
+      onMouseLeave={handleMouseLeave}
+    >
+      <nav className="landing-nav">
+        <img src={logo1} alt="logo" />
+
+        <ul className="nav-links-landing">
+          <li
+            onMouseEnter={() => handleMouseEnter("home")}
+          >
+            HOME
+          </li>
+          <li onMouseEnter={() => handleMouseEnter("men")}>
+            MEN
+          </li>
+          <li onMouseEnter={() => handleMouseEnter("women")}>
+            WOMEN
+          </li>
+          <li onMouseEnter={() => handleMouseEnter("kids")}>
+            KIDS
+          </li>
+          <li onMouseEnter={() => handleMouseEnter("accessories")}>
+            ACCESSORIES
+          </li>
+           <li onMouseEnter={() => handleMouseEnter("accessories")}>
+            CONTACTO
+          </li>
+           <li onMouseEnter={() => handleMouseEnter("accessories")}>
+            MUNDO GEMîSS
+          </li>
+        </ul>
+
+        <div className="right-section">
+          <form className="search-landing">
+            <Search className="search-icon" />
+            <input type="text" placeholder="Search" />
+          </form>
+
+          <div className="nav-icons">
+            <User className="nav-icon" />
+            <Heart className="nav-icon" />
+            <ShoppingBag className="nav-icon" />
+          </div>
+        </div> 
+
+        {activeMenu && <DropdownMenu category={activeMenu} />}
+      </nav>
+    </div>
+  );
 }
