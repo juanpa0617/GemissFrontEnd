@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f0f0f0;
-  padding: 15px 30px;
+  padding: 8px 22px; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   position: relative;
@@ -24,20 +24,19 @@
   position: relative; /* IMPORTANTE: Esto es clave para el posicionamiento */
 }
 
-/* Crear un "puente invisible" entre el navbar y el dropdown */
 .dropdown-bridge {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  height: 5px; /* Pequeño espacio de seguridad */
+  height: 5px; 
   background: transparent;
   z-index: 999;
 }
 
 .landing-nav img {
-  width: 60px;
-  height: 60px;
+ width: 45px;
+  height: 45px;
   cursor: pointer;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -52,15 +51,15 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 30px;
+  gap: 10px;
 }
 
 .nav-links-landing li {
   position: relative;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 2px 5px;
   font-family: 'Philosopher', sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   color: #000010;
   transition: all 0.3s ease;
@@ -85,7 +84,7 @@
 .right-section {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .search-landing {
@@ -94,7 +93,7 @@
   position: relative;
   background-color: white;
   border-radius: 25px;
-  padding: 8px 15px;
+  padding: 5px 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border: 2px solid transparent;
   transition: all 0.3s ease;
@@ -119,7 +118,7 @@
 }
 
 .search-landing input {
-  width: 280px;
+  width: 220px;
   height: 35px;
   border: none;
   outline: none;
@@ -140,12 +139,12 @@
 }
 
 .nav-icon {
-  width: 28px;
-  height: 28px;
+    width: 22px;
+  height: 22px;
+  padding: 6px;
   cursor: pointer;
   color: #333;
   transition: all 0.3s ease;
-  padding: 8px;
   border-radius: 50%;
 }
 

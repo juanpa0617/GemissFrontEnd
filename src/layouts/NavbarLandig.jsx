@@ -39,16 +39,16 @@ export default function NavbarLanding() {
           <li
             onMouseEnter={() => handleMouseEnter("home")}
           >
-            HOME
+            INICIO
           </li>
           <li onMouseEnter={() => handleMouseEnter("men")}>
-            MEN
+            HOMBRES
           </li>
           <li onMouseEnter={() => handleMouseEnter("women")}>
-            WOMEN
+            MUJERES
           </li>
           <li onMouseEnter={() => handleMouseEnter("kids")}>
-            KIDS
+            NIÑO/A
           </li>
           <li onMouseEnter={() => handleMouseEnter("accessories")}>
             ACCESSORIES

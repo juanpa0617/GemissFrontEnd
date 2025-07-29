@@ -1,0 +1,105 @@
+.container-landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: #f0f0f0;
+  padding-top: 70px;
+  min-height: 100vh;
+}
+
+.hero-slider-section {
+  width: 100%;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  transition: brackground-image 0.5s ease-in-out;
+}
+
+.hero-slider-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.slider-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.slider-content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slider-content p {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3 ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.featured-brands {
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  background-color: #fff;
+  
+}
+.featured-brands h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.brand-logos {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 80px;
+  margin-bottom: 40px;
+  animation: animate 10s linear infinite;
+
+}
+
+@keyframes animate {
+ to{
+    translate: calc(-5 * 16rem);
+ }
+}
+
+.brand-logos img{
+    max-width: 120px;
+    height: 100px;
+    
+}
