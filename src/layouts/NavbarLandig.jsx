@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo1 from "../assets/gemiss.png";
 import { Heart, User, ShoppingBag, Search } from "lucide-react";
 import DropdownMenu from "../hooks/DropdownMenu";
@@ -28,35 +29,20 @@ export default function NavbarLanding() {
   }, [activeMenu]);
 
   return (
-    <div 
-      className="navbar-container"
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="navbar-container" onMouseLeave={handleMouseLeave}>
       <nav className="landing-nav">
         <img src={logo1} alt="logo" />
 
         <ul className="nav-links-landing">
-          <li
-            onMouseEnter={() => handleMouseEnter("home")}
-          >
-            INICIO
-          </li>
-          <li onMouseEnter={() => handleMouseEnter("men")}>
-            HOMBRES
-          </li>
-          <li onMouseEnter={() => handleMouseEnter("women")}>
-            MUJERES
-          </li>
-          <li onMouseEnter={() => handleMouseEnter("kids")}>
-            NIÑO/A
-          </li>
+          <li onMouseEnter={() => handleMouseEnter("home")}>INICIO</li>
+          <li onMouseEnter={() => handleMouseEnter("men")}>HOMBRES</li>
+          <li onMouseEnter={() => handleMouseEnter("women")}>MUJERES</li>
+          <li onMouseEnter={() => handleMouseEnter("kids")}>NIÑO/A</li>
           <li onMouseEnter={() => handleMouseEnter("accessories")}>
             ACCESSORIES
           </li>
-           <li onMouseEnter={() => handleMouseEnter("accessories")}>
-            CONTACTO
-          </li>
-           <li onMouseEnter={() => handleMouseEnter("accessories")}>
+          <li onMouseEnter={() => handleMouseEnter("accessories")}>CONTACTO</li>
+          <li onMouseEnter={() => handleMouseEnter("accessories")}>
             MUNDO GEMîSS
           </li>
         </ul>
@@ -68,11 +54,15 @@ export default function NavbarLanding() {
           </form>
 
           <div className="nav-icons">
-            <User className="nav-icon" />
-            <Heart className="nav-icon" />
-            <ShoppingBag className="nav-icon" />
+            <Link to="/login" aria-label="Iniciar Sesin">
+             
+              <User className="nav-icon" size={35} />
+            </Link>
+
+            <Heart className="nav-icon" size={35} />
+            <ShoppingBag className="nav-icon" size={35} />
           </div>
-        </div> 
+        </div>
 
         {activeMenu && <DropdownMenu category={activeMenu} />}
       </nav>

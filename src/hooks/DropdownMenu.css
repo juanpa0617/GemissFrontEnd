@@ -1,17 +1,18 @@
 .dropdown-menu {
   position: fixed; 
-  top: 80px; 
+  top: 62px; 
   left: 0;
   right: 0;
   background-color: #ffffff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   z-index: 999; 
   border-top: 1px solid #e5e5e5;
-  max-height: calc(100vh - 115px); 
+  max-height: calc(100vh - 62px); 
   margin: 0;
   opacity: 0;
   transform: translateY(-20px);
   animation: fadeInDown 0.3s ease-out forwards;
+  overflow-y: auto; 
 }
 
 @keyframes fadeInDown {
@@ -30,20 +31,20 @@
   grid-template-columns: repeat(5, 1fr);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
-  gap: 40px;
+  padding: 30px 20px;
+  gap: 30px; 
 }
 
 .dropdown-column {
-  min-height: 200px;
+  min-height: 150px; 
 }
 
 .dropdown-column h3 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   color: #111;
-  margin: 0 0 16px 0;
-  padding-bottom: 8px;
+  margin: 0 0 12px 0;
+  padding-bottom: 6px; 
   border-bottom: 1px solid #e5e5e5;
   text-transform: none;
   letter-spacing: normal;
@@ -56,18 +57,18 @@
 }
 
 .dropdown-column li {
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
 }
 
 .dropdown-column li a {
   color: #757575;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4; 
   transition: color 0.2s ease;
   display: block;
-  padding: 4px 0;
+  padding: 3px 0;
 }
 
 .dropdown-column li a:hover {
@@ -82,30 +83,30 @@
 @media (max-width: 1200px) {
   .dropdown-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    padding: 30px 20px;
+    gap: 25px;
+    padding: 25px 20px;
   }
 }
 
 @media (max-width: 900px) {
   .dropdown-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .dropdown-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 15px;
     padding: 20px 15px;
   }
   
   .dropdown-column h3 {
-    font-size: 14px;
+    font-size: 13px;
   }
   
   .dropdown-column li a {
-    font-size: 13px;
+    font-size: 12px;
   }
 }

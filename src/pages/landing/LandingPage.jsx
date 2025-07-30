@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import NavbarLandig from "../../layouts/navbarLandig.jsx";
+import NavbarLandig from "../../layouts/NavbarLandig.jsx";
+import FooterLanding from "../../layouts/footer/FooterLanding.jsx";
 import adidas from "../../assets/brands/adidas.png";
 import nike from "../../assets/brands/nike.jpg";
 import fila from "../../assets/brands/fila.png";
@@ -85,26 +86,48 @@ export default function LandingPage() {
 
         <section className="featured-brands">
           <h2 className="brands-title">Nuestras Marcas Aliadas</h2>
-          <div className="brand-logos">
-            <img src={adidas} alt="Adidas" className="image-brands" />
-            <img src={nike} alt="Nike" className="image-brands" />
-            <img src={fila} alt="Fila" className="image-brands" />
-            <img
-              src={hermesparis}
-              alt="Hermes Paris"
-              className="image-brands"
-            />
-            <img src={gucci} alt="Gucci" className="image-brands" />
-            <img src={under} alt="Under Armour" className="image-brands" />
-            <img src={zara} alt="Zara" className="image-brands" />
-            <img
-              src={dolcegabbana}
-              alt="Dolce & Gabbana"
-              className="image-brands"
-            />
+          <div className="brands-slider-wrapper">
+            <div className="brand-logos">
+              {/* Set completo 1 */}
+              <img src={adidas} alt="Adidas" className="image-brands" />
+              <img src={nike} alt="Nike" className="image-brands" />
+              <img src={fila} alt="Fila" className="image-brands" />
+              <img
+                src={hermesparis}
+                alt="Hermes Paris"
+                className="image-brands"
+              />
+              <img src={gucci} alt="Gucci" className="image-brands" />
+              <img src={under} alt="Under Armour" className="image-brands" />
+              <img src={zara} alt="Zara" className="image-brands" />
+              <img
+                src={dolcegabbana}
+                alt="Dolce & Gabbana"
+                className="image-brands"
+              />
+
+              {/* Set completo 2 */}
+              <img src={adidas} alt="Adidas" className="image-brands" />
+              <img src={nike} alt="Nike" className="image-brands" />
+              <img src={fila} alt="Fila" className="image-brands" />
+              <img
+                src={hermesparis}
+                alt="Hermes Paris"
+                className="image-brands"
+              />
+              <img src={gucci} alt="Gucci" className="image-brands" />
+              <img src={under} alt="Under Armour" className="image-brands" />
+              <img src={zara} alt="Zara" className="image-brands" />
+              <img
+                src={dolcegabbana}
+                alt="Dolce & Gabbana"
+                className="image-brands"
+              />
+            </div>
           </div>
         </section>
       </div>
+      <FooterLanding />
     </>
   );
 }

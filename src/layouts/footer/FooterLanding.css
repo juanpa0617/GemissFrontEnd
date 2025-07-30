@@ -1,0 +1,201 @@
+.main-footer {
+  background-color: #1a1a1a; 
+  color: #f0f0f0; 
+  padding: 60px 0 0 0;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px; 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.section-footer-about h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #e6b200; /* Color dorado/mostaza de tu logo "GEMBSS" como acento */
+  position: relative;
+}
+
+.section-footer-about p {
+  line-height: 1.7;
+  color: #b0b0b0; 
+  font-size: 1rem;
+}
+
+/* --- Estilos de la Sección de Navegación --- */
+.footer-section-navigation h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #e6b200; 
+  position: relative;
+}
+
+.footer-section-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section-navigation li {
+  margin-bottom: 12px;
+}
+
+.footer-section-navigation a {
+  color: #f0f0f0; 
+  text-decoration: none;
+  position: relative;
+  padding: 5px 0;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.footer-section-navigation a:hover {
+  color: #e6b200; 
+}
+
+/* --- Estilos de la Sección de Contacto --- */
+.footer-section-contact h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #e6b200; 
+  position: relative;
+}
+
+.footer-section-contact p {
+  color: #f0f0f0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.footer-section-contact p a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section-contact p a:hover {
+    color: #e6b200; 
+}
+
+.footer-section-contact svg {
+  width: 18px;
+  height: 18px;
+  color: #e6b200;
+  flex-shrink: 0;
+}
+
+/* --- Estilos de Redes Sociales --- */
+.socials-container h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #e6b200; 
+    position: relative;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #f0f0f0; 
+  text-decoration: none;
+  padding: 10px; 
+  border-radius: 50%; 
+  background: transparent; 
+  border: 1px solid #b0b0b0; 
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.socials a:hover {
+  background: rgba(230, 178, 0, 0.1); 
+  color: #e6b200;
+  transform: translateY(-3px);
+  border-color: #e6b200;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+.socials svg {
+  width: 22px; 
+  height: 22px;
+  color: inherit;
+}
+
+/* --- Estilos de la Sección de Derechos de Autor --- */
+.footer-bottom {
+  background: #111111; 
+  padding: 25px 0;
+  text-align: center;
+  border-top: 1px solid #333333; 
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #808080;
+  font-size: 0.95rem;
+}
+
+/* --- Media Queries para Responsive Design --- */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .footer-section-contact p {
+    justify-content: center;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+
+  .main-footer {
+    padding: 40px 0 0 0;
+  }
+
+  .socials-container h3 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 0 15px;
+  }
+
+  .socials a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .section-footer-about h3,
+  .footer-section-navigation h3,
+  .footer-section-contact h3,
+  .socials-container h3 {
+    font-size: 1.4rem;
+  }
+}
