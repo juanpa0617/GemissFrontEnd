@@ -3,26 +3,38 @@ import "./LoginComponent.css";
 import adele from "../../../assets/Modelos/adelelogin.jpg";
 import logo from "../../../assets/Gemiss.png";
 import { GoAlertFill } from "react-icons/go";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
 export default function LoginComponent() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: false, password: false });
   const [touched, setTouched] = useState({ email: false, password: false });
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const { login, isLoading, error } = useAuth();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const newErrors = {
-      email: !formData.email || !formData.email.includes('@'),
-      password: !formData.password
+      email: !formData.email || !formData.email.includes("@"),
+      password: !formData.password,
     };
-    
+
     setErrors(newErrors);
     setTouched({ email: true, password: true });
-    
+
     if (!newErrors.email && !newErrors.password) {
-      console.log("Login attempt:", formData);
+      const result = await login(formData.email, formData.password);
+      if (result.success) {
+        const userRole = result.data.user.role;
+
+        const redirectPath = userRole === "cliente" ? "/" : "/admin";
+        navigate(redirectPath);
+        console.log("Usuario logueado con rol:", userRole);
+      } else {
+        console.log("Error al iniciar sesión:", result.error);
+      }
     }
   };
 
@@ -32,33 +44,33 @@ export default function LoginComponent() {
       ...prevState,
       [name]: value,
     }));
-    
+
     // Limpiar error cuando el usuario empiece a escribir
     if (touched[name] && errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: false
+        [name]: false,
       }));
     }
   };
 
   const handleBlur = (e) => {
     const { name } = e.target;
-    setTouched(prev => ({
+    setTouched((prev) => ({
       ...prev,
-      [name]: true
+      [name]: true,
     }));
-    
+
     // Validar al perder el foco
-    if (name === 'email') {
-      setErrors(prev => ({
+    if (name === "email") {
+      setErrors((prev) => ({
         ...prev,
-        email: !formData.email || !formData.email.includes('@')
+        email: !formData.email || !formData.email.includes("@"),
       }));
-    } else if (name === 'password') {
-      setErrors(prev => ({
+    } else if (name === "password") {
+      setErrors((prev) => ({
         ...prev,
-        password: !formData.password
+        password: !formData.password,
       }));
     }
   };
@@ -67,10 +79,16 @@ export default function LoginComponent() {
     <main className="login-main-container">
       <section className="login-content">
         <form className="login-form-panel" onSubmit={handleSubmit}>
-          <Link to="/"><img src={logo} alt="Gemiss Logo" className="logo-login" /></Link>
+          <Link to="/">
+            <img src={logo} alt="Gemiss Logo" className="logo-login" />
+          </Link>
           <h2>Inicia Sesión</h2>
 
-          <div className={`form-group-login ${errors.email && touched.email ? 'error' : ''}`}>
+          <div
+            className={`form-group-login ${
+              errors.email && touched.email ? "error" : ""
+            }`}
+          >
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -89,7 +107,11 @@ export default function LoginComponent() {
             )}
           </div>
 
-          <div className={`form-group-login ${errors.password && touched.password ? 'error' : ''}`}>
+          <div
+            className={`form-group-login ${
+              errors.password && touched.password ? "error" : ""
+            }`}
+          >
             <label htmlFor="password">Contraseña</label>
             <input
               type="password"
@@ -103,7 +125,7 @@ export default function LoginComponent() {
             {errors.password && touched.password && (
               <div className="error-message">
                 <svg className="error-icon" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
                 </svg>
                 El campo contraseña es obligatorio
               </div>
@@ -112,8 +134,8 @@ export default function LoginComponent() {
 
           <p className="forgot-password-link">¿Has olvidado tu contraseña?</p>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="login-button"
             disabled={!formData.email || !formData.password}
           >
@@ -125,7 +147,6 @@ export default function LoginComponent() {
               Regístrate
             </Link>
           </div>
-
         </form>
 
         <figure className="login-figure-panel">
