@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./LoginComponent.css";
 import adele from "../../../assets/Modelos/adelelogin.jpg";
 import logo from "../../../assets/Gemiss.png";
+import { GoAlertFill } from "react-icons/go";
 import { Link } from "react-router-dom";
 
 export default function LoginComponent() {
@@ -12,7 +13,6 @@ export default function LoginComponent() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validación básica como Zara
     const newErrors = {
       email: !formData.email || !formData.email.includes('@'),
       password: !formData.password
@@ -22,7 +22,6 @@ export default function LoginComponent() {
     setTouched({ email: true, password: true });
     
     if (!newErrors.email && !newErrors.password) {
-      // Procesar login
       console.log("Login attempt:", formData);
     }
   };
@@ -84,9 +83,7 @@ export default function LoginComponent() {
             />
             {errors.email && touched.email && (
               <div className="error-message">
-                <svg className="error-icon" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
+                <GoAlertFill className="error-icon" />
                 El campo email es obligatorio
               </div>
             )}

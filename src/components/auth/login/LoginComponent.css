@@ -16,6 +16,7 @@
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
+  
 }
 
 .login-form-panel {
@@ -29,6 +30,7 @@
   max-width: 50%;
   box-sizing: border-box;
   background-color: #fff;
+  
   height: 100vh;
   overflow: hidden;
 }
