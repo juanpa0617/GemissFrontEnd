@@ -3,37 +3,36 @@ import api from "./api";
 export const loginService = async (credentials) => {
   try {
     const response = await api.post("/authentication/login", credentials);
-    return response.data;
+
+    return response.data.data;
   } catch (error) {
     console.log("error en login", error);
-
-    throw error;
+    const errorMessage = error.response?.data?.error || error.message || "Error en el login";
+    throw new Error(errorMessage);
   }
 };
-
-
 
 export const registerService = async (userData) => {
   try {
     const response = await api.post("/authentication/register", userData);
-    return response.data;
+    return response.data.data;
   } catch (error) {
     console.log("error en register", error);
-    throw error;
+    const errorMessage = error.response?.data?.error || error.message || "Error en el registro";
+    throw new Error(errorMessage);
   }
-
 };
 
-export const refreshTokenService = async ({refreshToken}) => {
+export const refreshTokenService = async (refreshToken) => {
   try {
-    const response = await api.post("/authentication/refresh-token", {refreshToken});
-    return response.data;
+    const response = await api.post("/authentication/refresh-token", { refreshToken });
+    return response.data.data;
   } catch (error) {
     console.log("error en refresh token", error);
-    throw error;
+    const errorMessage = error.response?.data?.error || error.message || "Error en refresh token";
+    throw new Error(errorMessage);
   }
 };
-
 
 export const logoutService = async () => {
   try {
@@ -43,4 +42,4 @@ export const logoutService = async () => {
     console.log("error en logout", error);
     throw error;
   } 
-}
+};

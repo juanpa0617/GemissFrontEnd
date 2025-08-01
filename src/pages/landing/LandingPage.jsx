@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NavbarLandig from "../../layouts/NavbarLandig.jsx";
+import NavbarLandig from "../../layouts/navbar/NavbarLandig.jsx";
 import FooterLanding from "../../layouts/footer/FooterLanding.jsx";
 import adidas from "../../assets/brands/adidas.png";
 import nike from "../../assets/brands/nike.jpg";

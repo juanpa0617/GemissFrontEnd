@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
-import { loginService, registerService, refreshTokenService } from "../services/AuthServices";
+import {
+  loginService,
+  registerService,
+  refreshTokenService,
+  logoutService,
+} from "../services/AuthServices";
 
 //Define el estado inicial cuando la app arranca
 const initialState = {
@@ -147,7 +152,9 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: AUTH_ACTIONS.LOGIN_START });
 
       //  Llama a la API para hacer login
-      const response = await loginService(email, password);
+      const credentials = { email, password };
+
+      const response = await loginService(credentials);
 
       //  Guarda tokens en localStorage del navegador
       localStorage.setItem("accessToken", response.accessToken);
@@ -221,14 +228,21 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Define función de logout
-  const logout = () => {
-    //  Elimina todo del localStorage
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("user");
+  const logout = async () => {
+    try {
+      await logoutService();
+      console.log("Logout exitoso");
+    } catch (error) {
+      console.log("error en logout", error);
+    } finally {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("user");
 
-    //Actualiza estado a deslogueado
-    dispatch({ type: AUTH_ACTIONS.LOGOUT });
+      //Actualiza estado a deslogueado
+      dispatch({ type: AUTH_ACTIONS.LOGOUT });
+    }
+    //  Elimina todo del localStorage
   };
 
   //  Define función para renovar token
@@ -322,7 +336,6 @@ export const AuthProvider = ({ children }) => {
     logout,
     refreshToken,
     clearError,
-
 
     // Funciones de autorización
     hasRole,
